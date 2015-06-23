@@ -1,0 +1,259 @@
+[Files]
+    file_path = ../../Sites/SturtPlains/Data/Processed/all/
+    in_filename = SturtPlains_2008_to_2014_L3.nc
+    out_filename = SturtPlains_2008_to_2014_L4.nc
+    plot_path = ../plots/
+
+[Output]
+    # uncomment the xl and nc lists to output specific variables
+    #xl = "['Ah','Cc','Fa','Fc','Fe','Fg','Fh','Fld','Flu','Fm','Fn','Fsd','Fsu','ps','RH','Sws','Ta','Ts','ustar','Ws','Wd']"
+    #nc = "['Ah','Cc','eta','EVI','Fa','Fc','Fc_storage','Fe','Fg','Fh','Fld','Flu','Fm','Fn','Fsd','Fsu','Precip','ps','q','RH','Sws','SHD','Ta','theta','Ts','ustar','Ws','Wd']"
+
+[Options]
+    UseExistingOutFile = No
+
+[Drivers]
+    [[Ah]]
+        [[[GapFillFromAlternate]]]
+            [[[[Ah_aws]]]]
+                source = "AWS"
+                file_name = ../../Sites/SturtPlains/Data/AWS/SturtPlains_AWS.nc
+            [[[[Ah_access]]]]
+                source = "ACCESS"
+                file_name = ../../Sites/SturtPlains/Data/ACCESS/SturtPlains_ACCESS.nc
+            [[[[Ah_bios2]]]]
+                source = "BIOS2"
+                file_name = ../../Sites/SturtPlains/Data/BIOS2/SturtPlains_BIOS2.nc
+        [[[GapFillFromClimatology]]]
+            [[[[Ah_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Ah','Ah_aws','Ah_access','Ah_bios2','Ah_cli']"
+    [[Cc]]
+        [[[GapFillFromClimatology]]]
+            [[[[Cc_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Cc','Cc_cli']"
+    [[Fa]]
+        [[[RangeCheck]]]
+            Lower = "[-150]*12"
+            Upper = "[850]*12"
+        [[[GapFillFromAlternate]]]
+            [[[[Fa_acc]]]]
+                source = "ACCESS"
+                file_name = ../../Sites/SturtPlains/Data/ACCESS/SturtPlains_ACCESS.nc
+            [[[[Fa_bios]]]]
+                source = "BIOS2"
+                file_name = ../../Sites/SturtPlains/Data/BIOS2/SturtPlains_BIOS2.nc
+        [[[GapFillFromClimatology]]]
+            [[[[Fa_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Fa','Fa_acc','Fa_bios','Fa_cli']"
+    [[Fg]]
+        [[[GapFillFromAlternate]]]
+            [[[[Fg_acc]]]]
+                source = "ACCESS"
+                file_name = ../../Sites/SturtPlains/Data/ACCESS/SturtPlains_ACCESS.nc
+            [[[[Fg_bios]]]]
+                source = "BIOS2"
+                file_name = ../../Sites/SturtPlains/Data/BIOS2/SturtPlains_BIOS2.nc
+        [[[GapFillFromClimatology]]]
+            [[[[Fg_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Fg','Fg_acc','Fg_bios','Fg_cli']"
+    [[Fld]]
+        [[[GapFillFromAlternate]]]
+            [[[[Fld_acc]]]]
+                source = "ACCESS"
+                file_name = ../../Sites/SturtPlains/Data/ACCESS/SturtPlains_ACCESS.nc
+            [[[[Fld_bios]]]]
+                source = "BIOS2"
+                file_name = ../../Sites/SturtPlains/Data/BIOS2/SturtPlains_BIOS2.nc
+        [[[GapFillFromClimatology]]]
+            [[[[Fld_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Fld','Fld_acc','Fld_bios','Fld_cli']"
+    [[Flu]]
+        [[[GapFillFromAlternate]]]
+            [[[[Flu_acc]]]]
+                source = "ACCESS"
+                file_name = ../../Sites/SturtPlains/Data/ACCESS/SturtPlains_ACCESS.nc
+            [[[[Flu_bios]]]]
+                source = "BIOS2"
+                file_name = ../../Sites/SturtPlains/Data/BIOS2/SturtPlains_BIOS2.nc
+        [[[GapFillFromClimatology]]]
+            [[[[Flu_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Flu','Flu_acc','Flu_bios','Flu_cli']"
+    [[Fn]]
+        [[[GapFillFromAlternate]]]
+            [[[[Fn_acc]]]]
+                source = "ACCESS"
+                file_name = ../../Sites/SturtPlains/Data/ACCESS/SturtPlains_ACCESS.nc
+            [[[[Fn_bios]]]]
+                source = "BIOS2"
+                file_name = ../../Sites/SturtPlains/Data/BIOS2/SturtPlains_BIOS2.nc
+        [[[GapFillFromClimatology]]]
+            [[[[Fn_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Fn','Fn_acc','Fn_bios','Fn_cli']"
+    [[Fsd]]
+        [[[ExcludeDates]]]
+            0 = "['2011-09-19 00:00','2011-09-28 00:00']"
+        [[[GapFillFromAlternate]]]
+            [[[[Fsd_acc]]]]
+                source = "ACCESS"
+                file_name = ../../Sites/SturtPlains/Data/ACCESS/SturtPlains_ACCESS.nc
+            [[[[Fsd_bios]]]]
+                source = "BIOS2"
+                file_name = ../../Sites/SturtPlains/Data/BIOS2/SturtPlains_BIOS2.nc
+        [[[GapFillFromClimatology]]]
+            [[[[Fsd_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Fsd','Fsd_acc','Fsd_bios','Fsd_cli']"
+    [[Fsu]]
+        [[[ExcludeDates]]]
+            0 = "['2011-09-19 00:00','2011-09-28 00:00']"
+        [[[GapFillFromAlternate]]]
+            [[[[Fsu_acc]]]]
+                source = "ACCESS"
+                file_name = ../../Sites/SturtPlains/Data/ACCESS/SturtPlains_ACCESS.nc
+            [[[[Fsu_bios]]]]
+                source = "BIOS2"
+                file_name = ../../Sites/SturtPlains/Data/BIOS2/SturtPlains_BIOS2.nc
+        [[[GapFillFromClimatology]]]
+            [[[[Fsu_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Fsu','Fsu_acc','Fsu_bios','Fsu_cli']"
+    [[ps]]
+        [[[GapFillFromAlternate]]]
+            [[[[ps_aws]]]]
+                source = "AWS"
+                file_name = ../../Sites/SturtPlains/Data/AWS/SturtPlains_AWS.nc
+        [[[GapFillFromClimatology]]]
+            [[[[ps_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['ps','ps_aws','ps_cli']"
+    [[Sws]]
+        [[[GapFillFromAlternate]]]
+            [[[[Sws_acc]]]]
+                source = "ACCESS"
+                file_name = ../../Sites/SturtPlains/Data/ACCESS/SturtPlains_ACCESS.nc
+                fit = "replace"
+                lag = "no"
+            [[[[Sws_bios]]]]
+                source = "BIOS2"
+                file_name = ../../Sites/SturtPlains/Data/BIOS2/SturtPlains_BIOS2.nc
+                fit = "replace"
+                lag = "no"
+        [[[MergeSeries]]]
+            Source     = "['Sws','Sws_acc','Sws_bios']"
+    [[Ta]]
+        [[[GapFillFromAlternate]]]
+            [[[[Ta_aws]]]]
+                source = "AWS"
+                file_name = ../../Sites/SturtPlains/Data/AWS/SturtPlains_AWS.nc
+        [[[GapFillFromClimatology]]]
+            [[[[Ta_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Ta','Ta_aws','Ta_cli']"
+    [[Ts]]
+        [[[GapFillFromAlternate]]]
+            [[[[Ts_acc]]]]
+                source = "ACCESS"
+                file_name = ../../Sites/SturtPlains/Data/ACCESS/SturtPlains_ACCESS.nc
+            [[[[Ts_bios]]]]
+                source = "BIOS2"
+                file_name = ../../Sites/SturtPlains/Data/BIOS2/SturtPlains_BIOS2.nc
+        [[[GapFillFromClimatology]]]
+            [[[[Ts_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Ts','Ts_acc','Ts_bios','Ts_cli']"
+    [[Ws]]
+        [[[GapFillFromAlternate]]]
+            [[[[Ws_aws]]]]
+                source = "AWS"
+                file_name = ../../Sites/SturtPlains/Data/AWS/SturtPlains_AWS.nc
+                fit = "replace"
+                lag = "no"
+        [[[GapFillFromClimatology]]]
+            [[[[Ws_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Ws','Ws_aws','Ws_cli']"
+    [[Wd]]
+        [[[GapFillFromAlternate]]]
+            [[[[Wd_aws]]]]
+                source = "AWS"
+                file_name = ../../Sites/SturtPlains/Data/AWS/SturtPlains_AWS.nc
+                fit = "replace"
+                lag = "no"
+        [[[GapFillFromClimatology]]]
+            [[[[Wd_cli]]]]
+                file_name = ../../Sites/SturtPlains/Data/Processed/all/SturtPlains_2008_to_2014_L3_Climatology.xls
+                method = "interpolated daily"
+        [[[MergeSeries]]]
+            Source     = "['Wd','Wd_aws','Wd_cli']"
+    [[Precip]]
+        [[[GapFillFromAlternate]]]
+            [[[[Precip_aws]]]]
+                source = "AWS"
+                file_name = ../../Sites/SturtPlains/Data/AWS/SturtPlains_AWS.nc
+                fit = "replace"
+                lag = "no"
+            [[[[Precip_bios]]]]
+                source = "BIOS2"
+                file_name = ../../Sites/SturtPlains/Data/BIOS2/SturtPlains_BIOS2.nc
+                fit = "replace"
+                lag = "no"
+        [[[MergeSeries]]]
+            Source     = "['Precip','Precip_aws','Precip_bios']"
+        [[[RangeCheck]]]
+            Lower      = "[0]*12"
+            Upper      = "[50]*12"
+
+[Plots]
+    [[1]]
+        Title = "Radiative fluxes"
+        Variables = "['Fsd','Fsu','Fld','Flu','Fn']"
+    [[2]]
+        Title = "Meteorology"
+        Variables = "['Ta','Ah','Cc','Ws','Wd','ps']"
+    [[3]]
+        Title = "Soil temperature, water content and heat flux"
+        Variables = "['Precip','Sws','Ts','Fg']"
+
+[Alternate_Summary]
+    [[1]]
+        Title = "Radiation"
+        Variables = "['Fsd_acc','Fld_acc','Fn_acc','Fa_acc']"
+    [[2]]
+        Title = "Meteorology"
+        Variables = "['Ta_aws','Ah_aws','Ws_aws','ps_aws']"
+    [[3]]
+        Title = "Soil"
+        Variables = "['Ts_acc','Sws_acc','Fg_acc','Precip_aws']"
